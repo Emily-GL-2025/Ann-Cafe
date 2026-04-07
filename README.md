@@ -26,17 +26,18 @@ This project is a School Cafeteria Menu App developed with claude-sonnet-4-5-202
 Displays food items with photos, prices, descriptions, and star ratings
 Shows shopping cart count
 Allows adding items to cart directly from the menu
+
 * Item Details Page
 Shows detailed information about selected menu items
 Allows users to submit ratings (1-5 stars)
 Displays all previous customer ratings
-Shopping Cart \& Checkout
-* Tracks items and quantities in cart
+
+* Shopping Cart \& Checkout Tracks items and quantities in cart
 Shows itemized order with pricing
 Allows removing items
 Places orders with confirmation and clears cart
-Owner Management (Password Protected)
-* Password-protected page
+
+* Owner Management (Password Protected) Password-protected page
 Allows cafeteria owners to add new dishes to the menu
 Validates input and prevents duplicate dish IDs
 Uses session state to persist data (cart, menu items, ratings, current page)
@@ -50,7 +51,7 @@ Pre-populated with 3 sample menu items (burger, pizza, salad)
 
 ### How to run
 
-In the terminal, go to the folder containing app.py, then run:
+In the terminal, go to the folder containing main.py, then run:
 
 \~\~\~
 streamlit run main.py
