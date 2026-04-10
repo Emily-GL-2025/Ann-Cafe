@@ -1,5 +1,5 @@
 
-#function to calculate the mean of the ratings
+#function to calculate the median of the ratings
 def median_caculation(rating_datas):
   rating_data.sort() #sort the list of rates
   count = len(rating_data)
