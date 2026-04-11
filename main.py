@@ -1,4 +1,5 @@
 import streamlit as st
+import emilyguo as eg
 
 # ---------------------------------------------------------
 # 1. Initialize Session State & Mock Data
@@ -45,7 +46,16 @@ if "menu" not in st.session_state:
             "description": "Crisp romaine lettuce, grilled chicken, croutons, and parmesan cheese.",
             "photo": "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?w=500&q=80",
             "ratings": [4, 4, 5, 3, 4, 4, 2, 3, 4, 5, 3, 4, 4, 3, 4]
+        },
+        # code developed by Emily 04/10
+        "rice": {
+            "name": "Beef and Rice",
+            "price": 5.50,
+            "description": "A warm dish of tender beef served over fluffy rice with sweet carrots, creating a comforting blend of savory and natural flavors.", 
+            "photo": "https://images.unsplash.com/photo-1573403707391-3612fb5e1f38?w=500&q=80",
+            "ratings": [4, 4, 5]
         }
+        # end of the code developed by Emily
     }
 
 # Helper function to calculate average ratings
@@ -115,6 +125,12 @@ if st.session_state.page == "home":
     
     st.divider()
 
+    # code developed by Emily 04/10
+    # set up bubble sort initial value for highest bayesian rating
+    highest_bayesian_rating = -1
+    highest_bayesian_rating_name = " "
+    # end of the code developed by Emily
+
     # Loop through the menu items and display them
     for item_id, details in st.session_state.menu.items():
         # Use columns to lay out the photo next to the text
@@ -132,6 +148,14 @@ if st.session_state.page == "home":
             # Display stars based on the rounded average rating
             st.write(f"**Rating:** {'⭐' * round(avg_rating)} ({avg_rating:.1f}/5 from {len(details['ratings'])} reviews)")
             
+            #code developed by Emily 04/10
+            bayesian_rating = eg.bayesian_average_calc(details["ratings"])
+            # always keeps the highest bayesian rating and the corresponding item name
+            if bayesian_rating > highest_bayesian_rating:
+                highest_bayesian_rating = bayesian_rating
+                highest_bayesian_rating_name = details["name"]
+            # end of the code developed by Emily
+
             # Buttons row
             btn_col1, btn_col2, btn_col3 = st.columns([2, 2, 1])
             with btn_col1:
@@ -147,12 +171,12 @@ if st.session_state.page == "home":
             
         st.divider()
     
-    # Chef's Recommended coded by Emily 04/06 using bayesian average
-    st.info("👨‍🍳 Chef's Recommended: [Coming soon ... ]")
+    # Chef's Recommended coded by Emily 04/10 using bayesian average
+    st.info(f"👨‍🍳 Chef's Recommended (based on bayesian average): {highest_bayesian_rating_name}")
     # End of Emily's code
 
     # Trending Now coded by Emily 04/06 using buzz score
-    st.info("📈 Trending Now: [Coming soon ...] ")
+    #st.info("📈 Trending Now: [Coming soon ...] ")
     # End of Emily's code
 
     # Owner button moved to bottom of home page
@@ -181,8 +205,10 @@ elif st.session_state.page == "detail":
         st.write(item["description"])
         avg_rating = get_average_rating(item["ratings"])
         st.write(f"**Average Rating:** {'⭐' * round(avg_rating)} ({avg_rating:.1f}/5)")
-        # Code added by Emily 04/06 using median function
-        st.write(f"**Median Rating: [coming soon...]**")
+        # Code added by Emily 04/09 using median function
+        median_rating = eg.median_calculation(item["ratings"])
+        st.write(f"**Median Rating:** {'⭐' * round(median_rating)} ({median_rating:.1f}/5)")
+        # end of code added by Emily 04/09
 
     st.divider()
 
@@ -205,9 +231,11 @@ elif st.session_state.page == "detail":
     # List all previous ratings
     st.subheader("Previous Ratings")
 
-    # # Bar chart by Emily 04/06 
-    st.info("📊 [coming soon...]")
-    # End of code by Emily
+    # code developed by Emily 04/10
+    # Bar chart by Emily 04/10
+    st.title("📊 Ratings Histogram")
+    st.bar_chart(eg.histogram_calc(item["ratings"]))
+    # End of the code developed by Emily
     
     if not item["ratings"]:
         st.info("No ratings yet. Be the first to rate!")
