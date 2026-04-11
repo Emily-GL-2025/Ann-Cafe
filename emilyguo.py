@@ -63,9 +63,9 @@ def bayesian_average_calc(ratings):
     """
 
     C = 15 # minimum number of ratings an item needs before its own rating starts to matter more than the global average.
+    m = 3.5 # the expacted average rating score
     counter = len(ratings) # number of ratings
     total = sum(ratings) # sum of the ratings scores
-    m = 3.5 # the expacted average rating score
 
     return (C * m + total) / (C + counter)
 

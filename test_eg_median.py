@@ -1,4 +1,4 @@
-
+# test script for etsting function median_calculation
 import emilyguo as eg
 
 menu = {

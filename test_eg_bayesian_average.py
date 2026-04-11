@@ -1,4 +1,4 @@
-
+# test script for etsting function bayesian_average_calc 
 import emilyguo as eg
 
 menu = {
