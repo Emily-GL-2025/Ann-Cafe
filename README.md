@@ -10,6 +10,8 @@ This project is a School Cafeteria Menu App developed with claude-sonnet-4-5-202
   * calculate histogram
 * Three test scripts for emilyguo.py
 
+You can test the deployed web app [here](https://ann-cafe-kxkaqmmamzkpincmlry2bf.streamlit.app/)
+
 ### Instruction to the Team
 
 * **Please avoid deleting or changing code in main.py. Talk to the team first.**
@@ -18,7 +20,7 @@ This project is a School Cafeteria Menu App developed with claude-sonnet-4-5-202
 * **Always separate your handwritten code from AI-generated code with comments.**
 
 ### News
-
+* **\[2026-04-12]** Second release by Emily now [online](https://ann-cafe-kxkaqmmamzkpincmlry2bf.streamlit.app/)
 * **\[2026-04-11]** Second release by Emily, complete function update
 * **\[2026-04-06]** First release by Emily
 
